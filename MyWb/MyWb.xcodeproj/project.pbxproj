@@ -14,7 +14,11 @@
 		E6F29F911BC664BB0020AAD7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E6F29F8F1BC664BB0020AAD7 /* LaunchScreen.storyboard */; };
 		E6F29F9C1BC664BB0020AAD7 /* MyWbTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6F29F9B1BC664BB0020AAD7 /* MyWbTests.swift */; };
 		E6F29FA71BC664BB0020AAD7 /* MyWbUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6F29FA61BC664BB0020AAD7 /* MyWbUITests.swift */; };
-		E6F29FB51BC6697C0020AAD7 /* Classes in Resources */ = {isa = PBXBuildFile; fileRef = E6F29FB41BC6697C0020AAD7 /* Classes */; settings = {ASSET_TAGS = (); }; };
+		E6F29FBF1BC67B150020AAD7 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6F29FBE1BC67B150020AAD7 /* MainViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		E6F29FC11BC67B340020AAD7 /* HomeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6F29FC01BC67B340020AAD7 /* HomeTableViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		E6F29FC31BC67B4F0020AAD7 /* MessageTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6F29FC21BC67B4F0020AAD7 /* MessageTableViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		E6F29FC51BC67B5F0020AAD7 /* FinderTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6F29FC41BC67B5F0020AAD7 /* FinderTableViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		E6F29FC71BC67B690020AAD7 /* MineTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6F29FC61BC67B690020AAD7 /* MineTableViewController.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,7 +52,11 @@
 		E6F29FA21BC664BB0020AAD7 /* MyWbUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyWbUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E6F29FA61BC664BB0020AAD7 /* MyWbUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyWbUITests.swift; sourceTree = "<group>"; };
 		E6F29FA81BC664BB0020AAD7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E6F29FB41BC6697C0020AAD7 /* Classes */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Classes; sourceTree = "<group>"; };
+		E6F29FBE1BC67B150020AAD7 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		E6F29FC01BC67B340020AAD7 /* HomeTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeTableViewController.swift; sourceTree = "<group>"; };
+		E6F29FC21BC67B4F0020AAD7 /* MessageTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageTableViewController.swift; sourceTree = "<group>"; };
+		E6F29FC41BC67B5F0020AAD7 /* FinderTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FinderTableViewController.swift; sourceTree = "<group>"; };
+		E6F29FC61BC67B690020AAD7 /* MineTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MineTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,7 +107,7 @@
 		E6F29F851BC664BB0020AAD7 /* MyWb */ = {
 			isa = PBXGroup;
 			children = (
-				E6F29FB41BC6697C0020AAD7 /* Classes */,
+				E6F29FB61BC66B8D0020AAD7 /* Class */,
 				E6F29F861BC664BB0020AAD7 /* AppDelegate.swift */,
 				E6F29F881BC664BB0020AAD7 /* ViewController.swift */,
 				E6F29F8A1BC664BB0020AAD7 /* Main.storyboard */,
@@ -126,6 +134,66 @@
 				E6F29FA81BC664BB0020AAD7 /* Info.plist */,
 			);
 			path = MyWbUITests;
+			sourceTree = "<group>";
+		};
+		E6F29FB61BC66B8D0020AAD7 /* Class */ = {
+			isa = PBXGroup;
+			children = (
+				E6F29FB81BC67ABC0020AAD7 /* Controllers */,
+			);
+			path = Class;
+			sourceTree = "<group>";
+		};
+		E6F29FB81BC67ABC0020AAD7 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				E6F29FBB1BC67ABC0020AAD7 /* Main */,
+				E6F29FBA1BC67ABC0020AAD7 /* Home */,
+				E6F29FBC1BC67ABC0020AAD7 /* Message */,
+				E6F29FB91BC67ABC0020AAD7 /* Finder */,
+				E6F29FBD1BC67ABC0020AAD7 /* Mine */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		E6F29FB91BC67ABC0020AAD7 /* Finder */ = {
+			isa = PBXGroup;
+			children = (
+				E6F29FC41BC67B5F0020AAD7 /* FinderTableViewController.swift */,
+			);
+			path = Finder;
+			sourceTree = "<group>";
+		};
+		E6F29FBA1BC67ABC0020AAD7 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				E6F29FC01BC67B340020AAD7 /* HomeTableViewController.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		E6F29FBB1BC67ABC0020AAD7 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				E6F29FBE1BC67B150020AAD7 /* MainViewController.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		E6F29FBC1BC67ABC0020AAD7 /* Message */ = {
+			isa = PBXGroup;
+			children = (
+				E6F29FC21BC67B4F0020AAD7 /* MessageTableViewController.swift */,
+			);
+			path = Message;
+			sourceTree = "<group>";
+		};
+		E6F29FBD1BC67ABC0020AAD7 /* Mine */ = {
+			isa = PBXGroup;
+			children = (
+				E6F29FC61BC67B690020AAD7 /* MineTableViewController.swift */,
+			);
+			path = Mine;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -232,7 +300,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				E6F29F911BC664BB0020AAD7 /* LaunchScreen.storyboard in Resources */,
-				E6F29FB51BC6697C0020AAD7 /* Classes in Resources */,
 				E6F29F8E1BC664BB0020AAD7 /* Assets.xcassets in Resources */,
 				E6F29F8C1BC664BB0020AAD7 /* Main.storyboard in Resources */,
 			);
@@ -259,6 +326,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E6F29FC11BC67B340020AAD7 /* HomeTableViewController.swift in Sources */,
+				E6F29FBF1BC67B150020AAD7 /* MainViewController.swift in Sources */,
+				E6F29FC31BC67B4F0020AAD7 /* MessageTableViewController.swift in Sources */,
+				E6F29FC71BC67B690020AAD7 /* MineTableViewController.swift in Sources */,
+				E6F29FC51BC67B5F0020AAD7 /* FinderTableViewController.swift in Sources */,
 				E6F29F891BC664BB0020AAD7 /* ViewController.swift in Sources */,
 				E6F29F871BC664BB0020AAD7 /* AppDelegate.swift in Sources */,
 			);
