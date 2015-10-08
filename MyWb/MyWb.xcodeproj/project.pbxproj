@@ -14,6 +14,7 @@
 		E6F29F911BC664BB0020AAD7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E6F29F8F1BC664BB0020AAD7 /* LaunchScreen.storyboard */; };
 		E6F29F9C1BC664BB0020AAD7 /* MyWbTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6F29F9B1BC664BB0020AAD7 /* MyWbTests.swift */; };
 		E6F29FA71BC664BB0020AAD7 /* MyWbUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6F29FA61BC664BB0020AAD7 /* MyWbUITests.swift */; };
+		E6F29FB51BC6697C0020AAD7 /* Classes in Resources */ = {isa = PBXBuildFile; fileRef = E6F29FB41BC6697C0020AAD7 /* Classes */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,7 @@
 		E6F29FA21BC664BB0020AAD7 /* MyWbUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyWbUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E6F29FA61BC664BB0020AAD7 /* MyWbUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyWbUITests.swift; sourceTree = "<group>"; };
 		E6F29FA81BC664BB0020AAD7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E6F29FB41BC6697C0020AAD7 /* Classes */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Classes; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +99,7 @@
 		E6F29F851BC664BB0020AAD7 /* MyWb */ = {
 			isa = PBXGroup;
 			children = (
+				E6F29FB41BC6697C0020AAD7 /* Classes */,
 				E6F29F861BC664BB0020AAD7 /* AppDelegate.swift */,
 				E6F29F881BC664BB0020AAD7 /* ViewController.swift */,
 				E6F29F8A1BC664BB0020AAD7 /* Main.storyboard */,
@@ -229,6 +232,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E6F29F911BC664BB0020AAD7 /* LaunchScreen.storyboard in Resources */,
+				E6F29FB51BC6697C0020AAD7 /* Classes in Resources */,
 				E6F29F8E1BC664BB0020AAD7 /* Assets.xcassets in Resources */,
 				E6F29F8C1BC664BB0020AAD7 /* Main.storyboard in Resources */,
 			);
@@ -481,6 +485,7 @@
 				E6F29FAD1BC664BB0020AAD7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E6F29FAE1BC664BB0020AAD7 /* Build configuration list for PBXNativeTarget "MyWbTests" */ = {
 			isa = XCConfigurationList;
@@ -489,6 +494,7 @@
 				E6F29FB01BC664BB0020AAD7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E6F29FB11BC664BB0020AAD7 /* Build configuration list for PBXNativeTarget "MyWbUITests" */ = {
 			isa = XCConfigurationList;
@@ -497,6 +503,7 @@
 				E6F29FB31BC664BB0020AAD7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
