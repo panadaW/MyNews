@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E68462E61BC686B8001DE4F2 /* BaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68462E51BC686B8001DE4F2 /* BaseTableViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		E68462E81BC68E32001DE4F2 /* VisitorLoadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68462E71BC68E32001DE4F2 /* VisitorLoadView.swift */; settings = {ASSET_TAGS = (); }; };
 		E6F29F871BC664BB0020AAD7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6F29F861BC664BB0020AAD7 /* AppDelegate.swift */; };
 		E6F29F891BC664BB0020AAD7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6F29F881BC664BB0020AAD7 /* ViewController.swift */; };
 		E6F29F8C1BC664BB0020AAD7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E6F29F8A1BC664BB0020AAD7 /* Main.storyboard */; };
@@ -38,6 +40,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E68462E51BC686B8001DE4F2 /* BaseTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTableViewController.swift; sourceTree = "<group>"; };
+		E68462E71BC68E32001DE4F2 /* VisitorLoadView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VisitorLoadView.swift; sourceTree = "<group>"; };
 		E6F29F831BC664BB0020AAD7 /* MyWb.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyWb.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E6F29F861BC664BB0020AAD7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E6F29F881BC664BB0020AAD7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -173,6 +177,8 @@
 			isa = PBXGroup;
 			children = (
 				E6F29FBE1BC67B150020AAD7 /* MainViewController.swift */,
+				E68462E51BC686B8001DE4F2 /* BaseTableViewController.swift */,
+				E68462E71BC68E32001DE4F2 /* VisitorLoadView.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -260,6 +266,7 @@
 				TargetAttributes = {
 					E6F29F821BC664BB0020AAD7 = {
 						CreatedOnToolsVersion = 7.0;
+						DevelopmentTeam = 8JLNULP26P;
 					};
 					E6F29F961BC664BB0020AAD7 = {
 						CreatedOnToolsVersion = 7.0;
@@ -324,8 +331,10 @@
 			files = (
 				E6F29FC11BC67B340020AAD7 /* HomeTableViewController.swift in Sources */,
 				E6F29FBF1BC67B150020AAD7 /* MainViewController.swift in Sources */,
+				E68462E61BC686B8001DE4F2 /* BaseTableViewController.swift in Sources */,
 				E6F29FC31BC67B4F0020AAD7 /* MessageTableViewController.swift in Sources */,
 				E6F29FC71BC67B690020AAD7 /* MineTableViewController.swift in Sources */,
+				E68462E81BC68E32001DE4F2 /* VisitorLoadView.swift in Sources */,
 				E6F29FC51BC67B5F0020AAD7 /* FinderTableViewController.swift in Sources */,
 				E6F29F891BC664BB0020AAD7 /* ViewController.swift in Sources */,
 				E6F29F871BC664BB0020AAD7 /* AppDelegate.swift in Sources */,
@@ -461,10 +470,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = BrandAsset;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = MyWb/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = cn.itcast.MyWb;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -473,10 +485,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = BrandAsset;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = MyWb/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = cn.itcast.MyWb;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};

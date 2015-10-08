@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FinderTableViewController: UITableViewController {
+class FinderTableViewController: BaseTableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
