@@ -7,8 +7,23 @@
 //
 
 import UIKit
-
+//访客试图协议
+protocol VisitorLoadViewDelagate : NSObjectProtocol{
+//点击登录方法
+func clickLoginButton()
+//    点击注册方法
+func clickRegisterButton()
+}
 class VisitorLoadView: UIView {
+//    定义代理属性
+    weak var delegata: VisitorLoadViewDelagate?
+//    点击事件
+    func clickLogin(){
+    delegata?.clickLoginButton()
+    }
+    func clickRegister(){
+    delegata?.clickRegisterButton()
+    }
     override init(frame: CGRect) {
         super.init(frame: frame)
     setupUI()
@@ -93,7 +108,7 @@ class VisitorLoadView: UIView {
         btn.setTitle("注册", forState: UIControlState.Normal)
         btn.setBackgroundImage(UIImage(named: "common_button_white_disable"), forState: UIControlState.Normal)
         btn.setTitleColor(UIColor.orangeColor(), forState: UIControlState.Normal)
-//        btn.addTarget(self, action: "clickRegister", forControlEvents: UIControlEvents.TouchUpInside)
+        btn.addTarget(self, action: "clickRegister", forControlEvents: UIControlEvents.TouchUpInside)
         
         return btn
         }()
@@ -104,7 +119,7 @@ class VisitorLoadView: UIView {
         btn.setTitle("登录", forState: UIControlState.Normal)
         btn.setBackgroundImage(UIImage(named: "common_button_white_disable"), forState: UIControlState.Normal)
         btn.setTitleColor(UIColor.darkGrayColor(), forState: UIControlState.Normal)
-//        btn.addTarget(self, action: "clickLogin", forControlEvents: UIControlEvents.TouchUpInside)
+        btn.addTarget(self, action: "clickLogin", forControlEvents: UIControlEvents.TouchUpInside)
 //        
         return btn
         }()

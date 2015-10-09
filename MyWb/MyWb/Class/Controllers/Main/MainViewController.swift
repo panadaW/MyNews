@@ -33,8 +33,7 @@ class MainViewController: UITabBarController {
 //添加子控制器
     private func addChildViewController(v: UIViewController,title: String,imagename:String) {
         v.title = title
-       tabBar.tintColor = UIColor.orangeColor()
-       v.tabBarItem.image = UIImage(named: imagename)
+        v.tabBarItem.image = UIImage(named: imagename)
         let nav = UINavigationController(rootViewController: v)
        addChildViewController(nav)
        
