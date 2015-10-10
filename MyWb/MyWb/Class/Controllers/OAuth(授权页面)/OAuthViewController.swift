@@ -5,7 +5,7 @@
 //  Created by 王明申 on 15/10/9.
 //  Copyright © 2015年 晨曦的Mac. All rights reserved.
 //
-
+import SVProgressHUD
 import UIKit
 //用webview加载页面
 class OAuthViewController: UIViewController,UIWebViewDelegate{
@@ -19,22 +19,27 @@ class OAuthViewController: UIViewController,UIWebViewDelegate{
     }
 //返回界面
     func close(){
+        SVProgressHUD.dismiss()
     dismissViewControllerAnimated(true, completion: nil)
     
     }
 //    代理方法
     func webViewDidStartLoad(webView: UIWebView) {
-        close()
+//        close()
     }
     func webViewDidFinishLoad(webView: UIWebView) {
-        close()
+//        close()
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-
+//加载授权页面
+        webview.loadRequest(NSURLRequest(URL: NetWorkShare.shareTools.oauthUrl()))
         // Do any additional setup after loading the view.
     }
 
+    func webView(webView: UIWebView, shouldStartLoadWithRequest request: NSURLRequest, navigationType: UIWebViewNavigationType) -> Bool {
+        return true
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

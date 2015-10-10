@@ -22,6 +22,8 @@
 		E6F29FC51BC67B5F0020AAD7 /* FinderTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6F29FC41BC67B5F0020AAD7 /* FinderTableViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		E6F29FC71BC67B690020AAD7 /* MineTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6F29FC61BC67B690020AAD7 /* MineTableViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		E6F65B871BC7D48E006E3185 /* OAuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6F65B861BC7D48E006E3185 /* OAuthViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		E6F65B8A1BC910E9006E3185 /* NetWorkShare.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6F65B891BC910E9006E3185 /* NetWorkShare.swift */; settings = {ASSET_TAGS = (); }; };
+		E6F65B8C1BC92016006E3185 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E6F65B8B1BC92016006E3185 /* Info.plist */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,7 +54,6 @@
 		E6F29F881BC664BB0020AAD7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		E6F29F8B1BC664BB0020AAD7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E6F29F8D1BC664BB0020AAD7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		E6F29F921BC664BB0020AAD7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E6F29F971BC664BB0020AAD7 /* MyWbTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyWbTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E6F29F9B1BC664BB0020AAD7 /* MyWbTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyWbTests.swift; sourceTree = "<group>"; };
 		E6F29F9D1BC664BB0020AAD7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -65,6 +66,8 @@
 		E6F29FC41BC67B5F0020AAD7 /* FinderTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FinderTableViewController.swift; sourceTree = "<group>"; };
 		E6F29FC61BC67B690020AAD7 /* MineTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MineTableViewController.swift; sourceTree = "<group>"; };
 		E6F65B861BC7D48E006E3185 /* OAuthViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OAuthViewController.swift; sourceTree = "<group>"; };
+		E6F65B891BC910E9006E3185 /* NetWorkShare.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetWorkShare.swift; sourceTree = "<group>"; };
+		E6F65B8B1BC92016006E3185 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,7 +143,7 @@
 				E6F29F881BC664BB0020AAD7 /* ViewController.swift */,
 				E6F29F8A1BC664BB0020AAD7 /* Main.storyboard */,
 				E6F29F8D1BC664BB0020AAD7 /* Assets.xcassets */,
-				E6F29F921BC664BB0020AAD7 /* Info.plist */,
+				E6F65B8B1BC92016006E3185 /* Info.plist */,
 			);
 			path = MyWb;
 			sourceTree = "<group>";
@@ -167,6 +170,7 @@
 			isa = PBXGroup;
 			children = (
 				E6F29FB81BC67ABC0020AAD7 /* Controllers */,
+				E6F65B881BC91047006E3185 /* Tool */,
 			);
 			path = Class;
 			sourceTree = "<group>";
@@ -232,6 +236,14 @@
 				E6F65B861BC7D48E006E3185 /* OAuthViewController.swift */,
 			);
 			path = "OAuth(授权页面)";
+			sourceTree = "<group>";
+		};
+		E6F65B881BC91047006E3185 /* Tool */ = {
+			isa = PBXGroup;
+			children = (
+				E6F65B891BC910E9006E3185 /* NetWorkShare.swift */,
+			);
+			path = Tool;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -343,6 +355,7 @@
 			files = (
 				E6F29F8E1BC664BB0020AAD7 /* Assets.xcassets in Resources */,
 				E6F29F8C1BC664BB0020AAD7 /* Main.storyboard in Resources */,
+				E6F65B8C1BC92016006E3185 /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -424,6 +437,7 @@
 				E68462E81BC68E32001DE4F2 /* VisitorLoadView.swift in Sources */,
 				E6F29FC51BC67B5F0020AAD7 /* FinderTableViewController.swift in Sources */,
 				E6F29F891BC664BB0020AAD7 /* ViewController.swift in Sources */,
+				E6F65B8A1BC910E9006E3185 /* NetWorkShare.swift in Sources */,
 				E6F29F871BC664BB0020AAD7 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -561,6 +575,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = MyWb/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = cn.itcast.MyWb;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -577,6 +592,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = MyWb/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = cn.itcast.MyWb;
 				PRODUCT_NAME = "$(TARGET_NAME)";
