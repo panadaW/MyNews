@@ -9,12 +9,14 @@
 import UIKit
 
 class BaseTableViewController: UITableViewController,VisitorLoadViewDelagate {
+//    let key = TokenModel.loadToken() != nil
     let key = false
     //访客试图
     var visitorview: VisitorLoadView?
     override func viewDidLoad() {
         key ? super.viewDidLoad() : pickview()
     }
+//      登录界面
     func pickview(){
         visitorview = VisitorLoadView()
         visitorview?.delegata = self

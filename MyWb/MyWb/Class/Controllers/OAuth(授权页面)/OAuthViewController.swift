@@ -46,7 +46,7 @@ class OAuthViewController: UIViewController,UIWebViewDelegate{
         return true
         }
         print(request.URL?.query)
-        if let query = request.URL?.query where query.hasPrefix("code"){
+        if let query = request.URL?.query where query.hasPrefix("code="){
         print("获取授权码")
             let code = query.substringFromIndex("code=".endIndex)
             print(code)
@@ -74,7 +74,13 @@ class OAuthViewController: UIViewController,UIWebViewDelegate{
          return
         }
        let tokenmodel = TokenModel(dict: resault!)
+//        保存账户到沙盒
+        tokenmodel.saveToken()
        print(tokenmodel)
+//        加载用户信息
+        NetWorkShare.shareTools.loadUserInfo(tokenmodel.uid!, finished: { (resault, error) -> () in
+            print(resault)
+        })
          }
     
     }

@@ -8,6 +8,8 @@
 
 import UIKit
 import AFNetworking
+/// 错误的类别标记
+private let ErrorName = "xxxxxxxxxxxx"
 class NetWorkShare: AFHTTPSessionManager {
 //创建单例
     static let shareTools: NetWorkShare = {
@@ -30,7 +32,16 @@ class NetWorkShare: AFHTTPSessionManager {
 
         return NSURL(string: urlString)!
     }
-//    字典转模型
+//  加载用户信息
+    func loadUserInfo(uid: String,finished:netFeedback) {
+        if TokenModel.loadToken()?.access_token == nil{
+        return
+        }
+    let urlstring = "2/users/show.json"
+        let parmeter: [String: AnyObject] = ["access_token":TokenModel.loadToken()!.access_token!,"uid": uid]
+//        发送网络请求
+        requestGET(urlstring, parameters: parmeter, finish: finished)
+    }
    
 //根据授权码获取Token,使用回调，让试图控制器做想做的事
     func loadAccessToken (coad: String,finish: (resault :[String: AnyObject]?,error: NSError?)->()) {
@@ -48,8 +59,29 @@ class NetWorkShare: AFHTTPSessionManager {
     
     
     }
-
-
+//网络回调起别名
+    typealias netFeedback = (resault :[String: AnyObject]?,error: NSError?)->()
+//封装afn网络方法
+    private func requestGET(coad: String,parameters:[String: AnyObject],finish:netFeedback){
+    GET(coad, parameters: parameters, success: { (_,JSON) -> Void in
+        
+        if let resault = JSON as? [String: AnyObject] {
+            
+            finish(resault: resault, error: nil)
+        }
+        else{
+            
+            print("数据异常")
+            let error = NSError(domain: ErrorName, code: -12, userInfo: ["errorMessage":"数据为空"])
+            finish(resault: nil, error: error)
+        }
+        }) { (_, error) -> Void in
+            print(error)
+            finish(resault: nil, error: error)
+        }
+    
+    
+    }
 
 
 }
