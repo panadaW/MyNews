@@ -30,7 +30,24 @@ class NetWorkShare: AFHTTPSessionManager {
 
         return NSURL(string: urlString)!
     }
-
+//    字典转模型
+   
+//根据授权码获取Token,使用回调，让试图控制器做想做的事
+    func loadAccessToken (coad: String,finish: (resault :[String: AnyObject]?,error: NSError?)->()) {
+        let urltoken = "https://api.weibo.com/oauth2/access_token"
+        let paramar = ["client_id" :clientId,
+                       "client_secret" :appSecret,
+                       "grant_type" :"authorization_code",
+                       "code" :coad,
+                       "redirect_uri" :redirectUri,]
+    POST(urltoken, parameters: paramar, success: { (_, JSON) -> Void in
+        finish(resault: JSON as? [String : AnyObject], error: nil)
+        }) { (_, error) -> Void in
+            finish(resault: nil, error: error)
+        }
+    
+    
+    }
 
 
 

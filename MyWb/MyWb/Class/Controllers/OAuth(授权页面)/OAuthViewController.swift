@@ -25,10 +25,10 @@ class OAuthViewController: UIViewController,UIWebViewDelegate{
     }
 //    代理方法
     func webViewDidStartLoad(webView: UIWebView) {
-//        close()
+       SVProgressHUD.show()
     }
     func webViewDidFinishLoad(webView: UIWebView) {
-//        close()
+       SVProgressHUD.dismiss()
     }
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,15 +36,48 @@ class OAuthViewController: UIViewController,UIWebViewDelegate{
         webview.loadRequest(NSURLRequest(URL: NetWorkShare.shareTools.oauthUrl()))
         // Do any additional setup after loading the view.
     }
-
+//从请求的url中获取授权码
     func webView(webView: UIWebView, shouldStartLoadWithRequest request: NSURLRequest, navigationType: UIWebViewNavigationType) -> Bool {
+        print(request)
+//        生成完整的字符串
+        let urlstring = request.URL!.absoluteString
+//        是否包含回调地址
+        if !urlstring.hasPrefix(NetWorkShare.shareTools.redirectUri){
         return true
+        }
+        print(request.URL?.query)
+        if let query = request.URL?.query where query.hasPrefix("code"){
+        print("获取授权码")
+            let code = query.substringFromIndex("code=".endIndex)
+            print(code)
+//            获取TOKEN
+            loadToken(code)
+        }
+            else  {
+            close()
+            }
+      return false
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+//  获取Token方法
+    func loadToken(coad: String) {
+    NetWorkShare.shareTools.loadAccessToken(coad) { (resault, error) -> () in
+        if error != nil || resault == nil {
+        SVProgressHUD.showInfoWithStatus("你的网络异常")
+            let time = dispatch_time(DISPATCH_TIME_NOW, Int64(1*NSEC_PER_SEC))
+            dispatch_after(time, dispatch_get_main_queue(), { () -> Void in
+                self.close()
+            })
+         return
+        }
+       let tokenmodel = TokenModel(dict: resault!)
+       print(tokenmodel)
+         }
     
+    }
 
     
 }

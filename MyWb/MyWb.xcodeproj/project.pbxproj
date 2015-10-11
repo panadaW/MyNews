@@ -10,6 +10,7 @@
 		0A11CC50B4377875BB876CAB /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD60CAF21D14413D3E47CDA8 /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		E68462E61BC686B8001DE4F2 /* BaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68462E51BC686B8001DE4F2 /* BaseTableViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		E68462E81BC68E32001DE4F2 /* VisitorLoadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68462E71BC68E32001DE4F2 /* VisitorLoadView.swift */; settings = {ASSET_TAGS = (); }; };
+		E6C90FC11BCA390A00413BAD /* TokenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6C90FC01BCA390A00413BAD /* TokenModel.swift */; settings = {ASSET_TAGS = (); }; };
 		E6F29F871BC664BB0020AAD7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6F29F861BC664BB0020AAD7 /* AppDelegate.swift */; };
 		E6F29F891BC664BB0020AAD7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6F29F881BC664BB0020AAD7 /* ViewController.swift */; };
 		E6F29F8C1BC664BB0020AAD7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E6F29F8A1BC664BB0020AAD7 /* Main.storyboard */; };
@@ -49,6 +50,7 @@
 		DD60CAF21D14413D3E47CDA8 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E68462E51BC686B8001DE4F2 /* BaseTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTableViewController.swift; sourceTree = "<group>"; };
 		E68462E71BC68E32001DE4F2 /* VisitorLoadView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VisitorLoadView.swift; sourceTree = "<group>"; };
+		E6C90FC01BCA390A00413BAD /* TokenModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TokenModel.swift; sourceTree = "<group>"; };
 		E6F29F831BC664BB0020AAD7 /* MyWb.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyWb.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E6F29F861BC664BB0020AAD7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E6F29F881BC664BB0020AAD7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -113,6 +115,15 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		E6C90FBF1BCA38BD00413BAD /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				E6C90FC01BCA390A00413BAD /* TokenModel.swift */,
+			);
+			name = Model;
+			path = Controllers/Message/Model;
+			sourceTree = "<group>";
+		};
 		E6F29F7A1BC664BB0020AAD7 = {
 			isa = PBXGroup;
 			children = (
@@ -169,6 +180,7 @@
 		E6F29FB61BC66B8D0020AAD7 /* Class */ = {
 			isa = PBXGroup;
 			children = (
+				E6C90FBF1BCA38BD00413BAD /* Model */,
 				E6F29FB81BC67ABC0020AAD7 /* Controllers */,
 				E6F65B881BC91047006E3185 /* Tool */,
 			);
@@ -429,6 +441,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E6F29FC11BC67B340020AAD7 /* HomeTableViewController.swift in Sources */,
+				E6C90FC11BCA390A00413BAD /* TokenModel.swift in Sources */,
 				E6F29FBF1BC67B150020AAD7 /* MainViewController.swift in Sources */,
 				E68462E61BC686B8001DE4F2 /* BaseTableViewController.swift in Sources */,
 				E6F29FC31BC67B4F0020AAD7 /* MessageTableViewController.swift in Sources */,
