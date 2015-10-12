@@ -10,6 +10,7 @@
 		0A11CC50B4377875BB876CAB /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD60CAF21D14413D3E47CDA8 /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		E68462E61BC686B8001DE4F2 /* BaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68462E51BC686B8001DE4F2 /* BaseTableViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		E68462E81BC68E32001DE4F2 /* VisitorLoadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68462E71BC68E32001DE4F2 /* VisitorLoadView.swift */; settings = {ASSET_TAGS = (); }; };
+		E6B033541BCBB2660099114A /* Pods.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = DD60CAF21D14413D3E47CDA8 /* Pods.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		E6C90FC11BCA390A00413BAD /* TokenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6C90FC01BCA390A00413BAD /* TokenModel.swift */; settings = {ASSET_TAGS = (); }; };
 		E6F29F871BC664BB0020AAD7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6F29F861BC664BB0020AAD7 /* AppDelegate.swift */; };
 		E6F29F891BC664BB0020AAD7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6F29F881BC664BB0020AAD7 /* ViewController.swift */; };
@@ -43,6 +44,19 @@
 			remoteInfo = MyWb;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		E6B033531BCBB22E0099114A /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				E6B033541BCBB2660099114A /* Pods.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		031753C423B92248B1E945AD /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
@@ -271,6 +285,7 @@
 				E6F29F811BC664BB0020AAD7 /* Resources */,
 				8B8054DFC7A8D4B2D47DC270 /* Embed Pods Frameworks */,
 				3299786E66873A870DF1FB15 /* Copy Pods Resources */,
+				E6B033531BCBB22E0099114A /* CopyFiles */,
 			);
 			buildRules = (
 			);

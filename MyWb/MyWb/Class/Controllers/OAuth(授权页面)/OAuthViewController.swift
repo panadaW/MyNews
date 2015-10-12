@@ -72,7 +72,7 @@ class OAuthViewController: UIViewController,UIWebViewDelegate{
 //        保存账户到沙盒
 //        加载用户信息
        TokenModel(dict: resault!).loadUserInfo({ (error) -> () in
-            if error == nil {
+            if error != nil {
             self.solveError()
             }else{
             print("保存信息成功")
