@@ -66,24 +66,33 @@ class OAuthViewController: UIViewController,UIWebViewDelegate{
     func loadToken(coad: String) {
     NetWorkShare.shareTools.loadAccessToken(coad) { (resault, error) -> () in
         if error != nil || resault == nil {
-        SVProgressHUD.showInfoWithStatus("你的网络异常")
-            let time = dispatch_time(DISPATCH_TIME_NOW, Int64(1*NSEC_PER_SEC))
-            dispatch_after(time, dispatch_get_main_queue(), { () -> Void in
-                self.close()
-            })
-         return
+        self.solveError()
+            return
         }
-       let tokenmodel = TokenModel(dict: resault!)
 //        保存账户到沙盒
-        tokenmodel.saveToken()
-       print(tokenmodel)
 //        加载用户信息
-        NetWorkShare.shareTools.loadUserInfo(tokenmodel.uid!, finished: { (resault, error) -> () in
-            print(resault)
+       TokenModel(dict: resault!).loadUserInfo({ (error) -> () in
+            if error == nil {
+            self.solveError()
+            }else{
+            print("保存信息成功")
+            }
         })
+        
+//        print(tokenmodel)
+//        NetWorkShare.shareTools.loadUserInfo(tokenmodel.uid!, finished: { (resault, error) -> () in
+//            print(resault)
+//        })
          }
     
     }
 
-    
+//   网络错误处理
+    private func solveError(){
+        SVProgressHUD.showInfoWithStatus("你的网络异常")
+        let time = dispatch_time(DISPATCH_TIME_NOW, Int64(1*NSEC_PER_SEC))
+        dispatch_after(time, dispatch_get_main_queue(), { () -> Void in
+            self.close()
+        })
+    }
 }

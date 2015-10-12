@@ -39,9 +39,26 @@ class TokenModel: NSObject, NSCoding {
     }
     
     override var description: String {
-        let arrayP=["access_token","expires_in","uid","overData"]
+        let arrayP=["access_token","expires_in","uid","overData","name","avatar_large"]
         return "\(dictionaryWithValuesForKeys(arrayP))"
         
+    }
+//    加载用户信息并保存在沙盒中
+    func loadUserInfo(finish: (error: NSError?)->()) {
+    NetWorkShare.shareTools.loadUserInfo(uid!) { (resault, error) -> () in
+        if error != nil{
+            finish(error: error!)
+        return
+        }
+//        设置数据
+        self.name  = resault!["name"] as? String
+        self.avatar_large = resault!["avatar_large"] as? String
+//        保存用户信息
+        self.saveToken()
+        print(self)
+        finish(error: nil)
+        }
+    
     }
 //  获取归档路径并保存
      static let tokenPath = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true).last! + "/token.plist"
@@ -70,6 +87,8 @@ class TokenModel: NSObject, NSCoding {
         aCoder.encodeDouble(expires_in, forKey: "expires_in")
         aCoder.encodeObject(uid, forKey: "uid")
         aCoder.encodeObject(overData, forKey: "overData")
+        aCoder.encodeObject(name, forKey: "name")
+        aCoder.encodeObject(avatar_large, forKey: "avatar_large")
     }
     //    结档，将二进制数据转换成自定义对象
     required init?(coder aDecoder: NSCoder) {
@@ -77,6 +96,9 @@ class TokenModel: NSObject, NSCoding {
         expires_in = aDecoder.decodeDoubleForKey("expires_in")
         uid = aDecoder.decodeObjectForKey("uid") as? String
         overData = aDecoder.decodeObjectForKey("overData") as? NSDate
+        name = aDecoder.decodeObjectForKey("name") as? String
+        avatar_large = aDecoder.decodeObjectForKey("avatar_large") as? String
+
     }
     
     
