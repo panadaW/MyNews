@@ -4,7 +4,7 @@
 //
 //  Created by 王明申 on 15/10/11.
 //  Copyright © 2015年 晨曦的Mac. All rights reserved.
-//
+
 
 import UIKit
 
@@ -34,6 +34,9 @@ class TokenModel: NSObject, NSCoding {
     init(dict:[String: AnyObject]) {
     super.init()
     setValuesForKeysWithDictionary(dict)
+        
+        
+        TokenModel.tokenmodel  = self
     }
     override func setValue(value: AnyObject?, forUndefinedKey key: String) {
     }
@@ -47,7 +50,7 @@ class TokenModel: NSObject, NSCoding {
     func loadUserInfo(finish: (error: NSError?)->()) {
     NetWorkShare.shareTools.loadUserInfo(uid!) { (resault, error) -> () in
         if error != nil{
-            finish(error: error!)
+            finish(error: error)
         return
         }
 //        设置数据
@@ -55,31 +58,31 @@ class TokenModel: NSObject, NSCoding {
         self.avatar_large = resault!["avatar_large"] as? String
 //        保存用户信息
         self.saveToken()
-        print(self)
         finish(error: nil)
         }
     
     }
 //  获取归档路径并保存
-     static let tokenPath = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true).last! + "/token.plist"
+     static private let tokenPath = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true).last!.stringByAppendingString("/token.plist")
 //  保存用户到磁盘
     func saveToken() {
     NSKeyedArchiver.archiveRootObject(self, toFile: TokenModel.tokenPath)
     }
 //  加载用户,使用一个静态属性防止每次都从磁盘加载
-   static var tokenmodel: TokenModel?
-   class func loadToken()-> TokenModel?{
+  private static var tokenmodel: TokenModel?
+    class var loadToken: TokenModel?{
 //        如果用户不存在（token）去沙盒加载
         if tokenmodel == nil{
 //        解码
             tokenmodel = NSKeyedUnarchiver.unarchiveObjectWithFile(tokenPath) as? TokenModel
-            return tokenmodel
+            
         }
 //        判断token是否过期，过期则为nil，否则返回该数据
     if let data = tokenmodel?.overData where data.compare(NSDate()) == NSComparisonResult.OrderedAscending{
      tokenmodel = nil
     }
     return tokenmodel
+       
     }
 //    归档，将自定义对象转换成二进制保存在磁盘
     func encodeWithCoder(aCoder: NSCoder) {

@@ -9,7 +9,7 @@
 import UIKit
 import AFNetworking
 /// 错误的类别标记
-private let ErrorName = "xxxxxxxxxxx"
+private let ErrorName = "error.network"
 //网络回调起别名
 typealias netFeedback = (resault :[String: AnyObject]?,error: NSError?)->()
 
@@ -56,15 +56,36 @@ class NetWorkShare: AFHTTPSessionManager {
             return NSError(domain: ErrorName, code: rawValue, userInfo: [ErrorName: errorDescription])
         }
     }
-//  加载用户信息
-    func loadUserInfo(uid: String,finished:netFeedback) {
-        if TokenModel.loadToken()?.access_token == nil{
-          let error = netWorkError.emptyTokenError.error()
-            print(error)
+//    封装生成token字典方法
+  private  func TokenToDict(finish: netFeedback)->([String: AnyObject]?) {
+        if TokenModel.loadToken?.access_token == nil {
+            let error = netWorkError.emptyTokenError.error()
+
+            finish(resault: nil, error: error)
+            return nil
+        }
+    
+   return ["access_token": TokenModel.loadToken!.access_token!]
+       
+    }
+//    加载微博数据
+    func loadStatus(finish: netFeedback) {
+        guard let parmeter = TokenToDict(finish) else {
         return
         }
-    let urlstring = "2/users/show.json"
-        let parmeter: [String: AnyObject] = ["access_token":TokenModel.loadToken()!.access_token!,"uid": uid]
+        
+        let urlstring = "2/statuses/home_timeline.json"
+//        发送网络请求
+        netWorkRequest(netWorkMethod.GET, coad: urlstring, paramet: parmeter, finish: finish)
+    
+    }
+//  加载用户信息
+    func loadUserInfo(uid: String,finished:netFeedback) {
+        guard var parmeter = TokenToDict(finished) else {
+        return
+        }
+        let urlstring = "2/users/show.json"
+        parmeter["uid"] = uid
 //        发送网络请求
 //        requestGET(urlstring, parameters: parmeter, finish: finished)
         netWorkRequest(netWorkMethod.GET, coad: urlstring, paramet: parmeter, finish: finished)
@@ -78,6 +99,7 @@ class NetWorkShare: AFHTTPSessionManager {
                        "grant_type" :"authorization_code",
                        "code" :coad,
                        "redirect_uri" :redirectUri,]
+        
         netWorkRequest(netWorkMethod.POST, coad: urltoken, paramet: paramar, finish: finish)
     
     }
@@ -89,11 +111,13 @@ class NetWorkShare: AFHTTPSessionManager {
         
         if let resault = JSON as? [String: AnyObject] {
         
+        print("------\(resault)")
+            
         finish(resault: resault, error: nil)
     }
     else {
         print("数据异常")
-        let error = netWorkError.emptyTokenError.error()
+        let error = netWorkError.emptyDataError.error()
         finish(resault: nil, error: error)
     }
     }
@@ -103,9 +127,9 @@ class NetWorkShare: AFHTTPSessionManager {
     finish(resault: nil, error: error)
     }
     switch method {
-    case.GET:
+    case .GET:
         GET(coad, parameters: paramet, success: finishBack, failure: failedBack)
-    case.POST:
+    case .POST:
         POST(coad, parameters: paramet, success: finishBack, failure: failedBack)
     }
 }

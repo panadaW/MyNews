@@ -45,13 +45,16 @@ class OAuthViewController: UIViewController,UIWebViewDelegate{
         if !urlstring.hasPrefix(NetWorkShare.shareTools.redirectUri){
         return true
         }
-        print(request.URL?.query)
+
+        
+        
         if let query = request.URL?.query where query.hasPrefix("code="){
         print("获取授权码")
             let code = query.substringFromIndex("code=".endIndex)
             print(code)
 //            获取TOKEN
             loadToken(code)
+            print("成功获取token")
         }
             else  {
             close()
@@ -66,14 +69,17 @@ class OAuthViewController: UIViewController,UIWebViewDelegate{
     func loadToken(coad: String) {
     NetWorkShare.shareTools.loadAccessToken(coad) { (resault, error) -> () in
         if error != nil || resault == nil {
+            
+            
         self.solveError()
-            return
+            
         }
 //        保存账户到沙盒
 //        加载用户信息
        TokenModel(dict: resault!).loadUserInfo({ (error) -> () in
             if error != nil {
             self.solveError()
+                return
             }else{
             print("保存信息成功")
             }
@@ -91,8 +97,8 @@ class OAuthViewController: UIViewController,UIWebViewDelegate{
     private func solveError(){
         SVProgressHUD.showInfoWithStatus("你的网络异常")
         let time = dispatch_time(DISPATCH_TIME_NOW, Int64(1*NSEC_PER_SEC))
-        dispatch_after(time, dispatch_get_main_queue(), { () -> Void in
+        dispatch_after(time, dispatch_get_main_queue()){
             self.close()
-        })
+        }
     }
 }

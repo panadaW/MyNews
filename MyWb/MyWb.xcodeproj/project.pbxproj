@@ -8,13 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		0A11CC50B4377875BB876CAB /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD60CAF21D14413D3E47CDA8 /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		E673BA7E1BCBEAFA00A7C665 /* UIView+AutoLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = E673BA7D1BCBEAFA00A7C665 /* UIView+AutoLayout.swift */; settings = {ASSET_TAGS = (); }; };
 		E68462E61BC686B8001DE4F2 /* BaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68462E51BC686B8001DE4F2 /* BaseTableViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		E68462E81BC68E32001DE4F2 /* VisitorLoadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68462E71BC68E32001DE4F2 /* VisitorLoadView.swift */; settings = {ASSET_TAGS = (); }; };
 		E6B033541BCBB2660099114A /* Pods.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = DD60CAF21D14413D3E47CDA8 /* Pods.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		E6C90FC11BCA390A00413BAD /* TokenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6C90FC01BCA390A00413BAD /* TokenModel.swift */; settings = {ASSET_TAGS = (); }; };
 		E6F29F871BC664BB0020AAD7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6F29F861BC664BB0020AAD7 /* AppDelegate.swift */; };
 		E6F29F891BC664BB0020AAD7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6F29F881BC664BB0020AAD7 /* ViewController.swift */; };
-		E6F29F8C1BC664BB0020AAD7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E6F29F8A1BC664BB0020AAD7 /* Main.storyboard */; };
 		E6F29F8E1BC664BB0020AAD7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E6F29F8D1BC664BB0020AAD7 /* Assets.xcassets */; };
 		E6F29F9C1BC664BB0020AAD7 /* MyWbTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6F29F9B1BC664BB0020AAD7 /* MyWbTests.swift */; };
 		E6F29FA71BC664BB0020AAD7 /* MyWbUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6F29FA61BC664BB0020AAD7 /* MyWbUITests.swift */; };
@@ -25,7 +25,6 @@
 		E6F29FC71BC67B690020AAD7 /* MineTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6F29FC61BC67B690020AAD7 /* MineTableViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		E6F65B871BC7D48E006E3185 /* OAuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6F65B861BC7D48E006E3185 /* OAuthViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		E6F65B8A1BC910E9006E3185 /* NetWorkShare.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6F65B891BC910E9006E3185 /* NetWorkShare.swift */; settings = {ASSET_TAGS = (); }; };
-		E6F65B8C1BC92016006E3185 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E6F65B8B1BC92016006E3185 /* Info.plist */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +61,7 @@
 		031753C423B92248B1E945AD /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		D05D9237F82958A6869D4488 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		DD60CAF21D14413D3E47CDA8 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E673BA7D1BCBEAFA00A7C665 /* UIView+AutoLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+AutoLayout.swift"; sourceTree = "<group>"; };
 		E68462E51BC686B8001DE4F2 /* BaseTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTableViewController.swift; sourceTree = "<group>"; };
 		E68462E71BC68E32001DE4F2 /* VisitorLoadView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VisitorLoadView.swift; sourceTree = "<group>"; };
 		E6C90FC01BCA390A00413BAD /* TokenModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TokenModel.swift; sourceTree = "<group>"; };
@@ -83,7 +83,7 @@
 		E6F29FC61BC67B690020AAD7 /* MineTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MineTableViewController.swift; sourceTree = "<group>"; };
 		E6F65B861BC7D48E006E3185 /* OAuthViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OAuthViewController.swift; sourceTree = "<group>"; };
 		E6F65B891BC910E9006E3185 /* NetWorkShare.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetWorkShare.swift; sourceTree = "<group>"; };
-		E6F65B8B1BC92016006E3185 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E6F65B8B1BC92016006E3185 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = MyWb/Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,6 +142,7 @@
 			isa = PBXGroup;
 			children = (
 				E6F29F851BC664BB0020AAD7 /* MyWb */,
+				E6F65B8B1BC92016006E3185 /* Info.plist */,
 				E6F29F9A1BC664BB0020AAD7 /* MyWbTests */,
 				E6F29FA51BC664BB0020AAD7 /* MyWbUITests */,
 				E6F29F841BC664BB0020AAD7 /* Products */,
@@ -168,7 +169,6 @@
 				E6F29F881BC664BB0020AAD7 /* ViewController.swift */,
 				E6F29F8A1BC664BB0020AAD7 /* Main.storyboard */,
 				E6F29F8D1BC664BB0020AAD7 /* Assets.xcassets */,
-				E6F65B8B1BC92016006E3185 /* Info.plist */,
 			);
 			path = MyWb;
 			sourceTree = "<group>";
@@ -267,6 +267,7 @@
 		E6F65B881BC91047006E3185 /* Tool */ = {
 			isa = PBXGroup;
 			children = (
+				E673BA7D1BCBEAFA00A7C665 /* UIView+AutoLayout.swift */,
 				E6F65B891BC910E9006E3185 /* NetWorkShare.swift */,
 			);
 			path = Tool;
@@ -381,8 +382,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				E6F29F8E1BC664BB0020AAD7 /* Assets.xcassets in Resources */,
-				E6F29F8C1BC664BB0020AAD7 /* Main.storyboard in Resources */,
-				E6F65B8C1BC92016006E3185 /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -462,6 +461,7 @@
 				E6F29FC31BC67B4F0020AAD7 /* MessageTableViewController.swift in Sources */,
 				E6F65B871BC7D48E006E3185 /* OAuthViewController.swift in Sources */,
 				E6F29FC71BC67B690020AAD7 /* MineTableViewController.swift in Sources */,
+				E673BA7E1BCBEAFA00A7C665 /* UIView+AutoLayout.swift in Sources */,
 				E68462E81BC68E32001DE4F2 /* VisitorLoadView.swift in Sources */,
 				E6F29FC51BC67B5F0020AAD7 /* FinderTableViewController.swift in Sources */,
 				E6F29F891BC664BB0020AAD7 /* ViewController.swift in Sources */,
