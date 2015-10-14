@@ -30,7 +30,7 @@ class homeCell: UITableViewCell {
     contentView.addSubview(contentLable)
     contentView.addSubview(bottomView)
   //顶部视图布局
-    topview.ff_AlignInner(type: ff_AlignType.BottomLeft, referView: topview, size: CGSize(width: UIScreen.mainScreen().bounds.width, height: 53))
+    topview.ff_AlignInner(type: ff_AlignType.TopLeft, referView: contentView, size: CGSize(width: UIScreen.mainScreen().bounds.width, height: 53))
 //   设置内容视图的约束
     contentLable.ff_AlignVertical(type: ff_AlignType.BottomLeft, referView: topview, size: nil, offset: CGPoint(x: 8, y: 8))
     // 宽度
@@ -39,8 +39,8 @@ class homeCell: UITableViewCell {
     // 3> 底部视图
     bottomView.ff_AlignVertical(type: ff_AlignType.BottomLeft, referView: contentLable, size: CGSize(width: UIScreen.mainScreen().bounds.width, height: 44), offset: CGPoint(x: -8, y: 8))
 //    // 底部约束
-//    contentView.addConstraint(NSLayoutConstraint(item: bottomView, attribute: NSLayoutAttribute.Bottom, relatedBy: NSLayoutRelation.Equal, toItem: contentView, attribute: NSLayoutAttribute.Bottom, multiplier: 1.0, constant: 0))
-//
+    contentView.addConstraint(NSLayoutConstraint(item: bottomView, attribute: NSLayoutAttribute.Bottom, relatedBy: NSLayoutRelation.Equal, toItem: contentView, attribute: NSLayoutAttribute.Bottom, multiplier: 1.0, constant: 0))
+
     
     }
 //    懒加载顶部试图

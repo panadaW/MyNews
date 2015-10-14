@@ -29,8 +29,8 @@ class HomeTableViewController: BaseTableViewController {
     private func prepareFortableView() {
     tableView.registerClass(homeCell.self, forCellReuseIdentifier: "Wcell")
 //       预估行高
-//        tableView.estimatedRowHeight = 300
-//        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 300
+        tableView.rowHeight = UITableViewAutomaticDimension
 //        取消分割线
         tableView.separatorStyle = UITableViewCellSeparatorStyle.None
 
@@ -53,21 +53,6 @@ class HomeTableViewController: BaseTableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Wcell", forIndexPath: indexPath) as! homeCell
         cell.status = statues![indexPath.row]
-        tableView.rowHeight = 300
-        return cell
+               return cell
     }
-//    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell  {
-//        
-//        let cell = tableView.dequeueReusableCellWithIdentifier("Wcell", forIndexPath: indexPath) as! homeCell
-////        let ID = "Cell"
-////        var cell = tableView.dequeueReusableCellWithIdentifier(ID)
-////        if cell == nil{
-////            cell = UITableViewCell.init(style: UITableViewCellStyle.Subtitle, reuseIdentifier: ID)
-////            }
-//          cell.status = status![indexPath.row]
-//        
-//        
-//        return cell
-//    }
-//
 }
