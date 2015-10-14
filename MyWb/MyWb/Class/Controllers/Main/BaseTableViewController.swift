@@ -9,7 +9,7 @@
 import UIKit
 
 class BaseTableViewController: UITableViewController,VisitorLoadViewDelagate {
-   let key = TokenModel.loadToken != nil
+  let key = TokenModel.loadToken != nil
 //    let key = false
     //访客试图
     var visitorview: VisitorLoadView?

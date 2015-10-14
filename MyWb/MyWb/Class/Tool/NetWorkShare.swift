@@ -60,7 +60,7 @@ class NetWorkShare: AFHTTPSessionManager {
   private  func TokenToDict(finish: netFeedback)->([String: AnyObject]?) {
         if TokenModel.loadToken?.access_token == nil {
             let error = netWorkError.emptyTokenError.error()
-
+            print(error)
             finish(resault: nil, error: error)
             return nil
         }
@@ -110,8 +110,6 @@ class NetWorkShare: AFHTTPSessionManager {
         let finishBack: (NSURLSessionDataTask!, AnyObject!) -> Void = { (_,JSON) -> Void in
         
         if let resault = JSON as? [String: AnyObject] {
-        
-        print("------\(resault)")
             
         finish(resault: resault, error: nil)
     }

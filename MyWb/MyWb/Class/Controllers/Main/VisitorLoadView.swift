@@ -35,7 +35,16 @@ class VisitorLoadView: UIView {
         setupUI()
     }
    
+///界面选择的控制
+    func changViewInfo(isHome:Bool,imagename: String,message: String) {
+        messageLabel.text = message
+        imageview.image = UIImage(named: imagename)
+        
+        homeIconView.hidden = !isHome
+        
 
+    
+    }
 ///设置界面
     private func setupUI() {
         addSubview(imageview)
