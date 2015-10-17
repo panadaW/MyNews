@@ -7,7 +7,8 @@
 //
 
 import UIKit
-
+//cell重用标识符
+private let pictureID = "cell"
 class PictureView: UICollectionView {
     var status: Status? {
         didSet {
@@ -53,7 +54,7 @@ class PictureView: UICollectionView {
     override init(frame: CGRect, collectionViewLayout layout: UICollectionViewLayout) {
         super.init(frame: frame, collectionViewLayout: pictureLayout)
         backgroundColor = UIColor.lightGrayColor()
-        registerClass(pictureCell.self, forCellWithReuseIdentifier: "cell")
+        registerClass(pictureCell.self, forCellWithReuseIdentifier: pictureID)
         self.dataSource = self
     }
 
@@ -68,7 +69,7 @@ class PictureView: UICollectionView {
         return status?.pictureURLs?.count ?? 0
     }
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("cell", forIndexPath: indexPath) as! pictureCell
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(pictureID, forIndexPath: indexPath) as! pictureCell
         cell.imgurl = status?.pictureURLs![indexPath.row]
         return cell
     }
