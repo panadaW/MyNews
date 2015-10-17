@@ -5,7 +5,7 @@
 //  Created by 王明申 on 15/10/14.
 //  Copyright © 2015年 晨曦的Mac. All rights reserved.
 //
-
+import SDWebImage
 import UIKit
 //cell重用标识符
 private let pictureID = "cell"
@@ -35,7 +35,15 @@ class PictureView: UICollectionView {
         return CGSizeZero
         }
         if count == 1 {
-        let size = CGSize(width: 150, height: 150)
+            let key = status!.pictureURLs![0].absoluteString
+//             获取缓存图片大小
+            let image = SDWebImageManager.sharedManager().imageCache.imageFromDiskCacheForKey(key)
+        var size = CGSize(width: 150, height: 120)
+            if image != nil {
+               size = image.size
+            }
+            size.width = size.width < 40 ? 40 : size.width
+            size.width = size.width > UIScreen.mainScreen().bounds.width ? 150 : size.width
             pictureLayout.itemSize = size
             return size
         }
@@ -100,8 +108,13 @@ class pictureCell: UICollectionViewCell {
         iconView.ff_Fill(contentView)
     }
     // 懒加载控件
-    lazy var iconView: UIImageView = UIImageView()
-
+    lazy var iconView: UIImageView = {
+    
+        let imageV = UIImageView()
+        imageV.contentMode = UIViewContentMode.ScaleAspectFill
+        imageV.clipsToBounds = true
+        return imageV
+    }()
 
 }
 
