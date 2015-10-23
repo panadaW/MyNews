@@ -7,11 +7,18 @@
 //
 import SDWebImage
 import UIKit
+//创建图片选择的通知
+let MyPictureNotifitation = "MyPictureNotifitation"
+//URL的key
+let MyPictureUrlKey = "MyPictureUrlKey"
+//indexpath的key
+let MyPictureIndexPathKey = "MyPictureIndexPathKey"
 //cell重用标识符
 private let pictureID = "cell"
 class PictureView: UICollectionView {
     var status: Status? {
         didSet {
+//           print(status?.largePictureURLs)
 //      需要重写sizeThatFits
         sizeToFit()
         reloadData()
@@ -64,6 +71,7 @@ class PictureView: UICollectionView {
         backgroundColor = UIColor.lightGrayColor()
         registerClass(pictureCell.self, forCellWithReuseIdentifier: pictureID)
         self.dataSource = self
+        self.delegate = self
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -71,14 +79,22 @@ class PictureView: UICollectionView {
     }
 }
 /// 给视图导入图片，添加分类
-   extension PictureView: UICollectionViewDataSource {
-    
+   extension PictureView: UICollectionViewDataSource,UICollectionViewDelegate {
+//    选中单元格代理方法
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+//        print(status!.largePictureURLs!)
+        NSNotificationCenter.defaultCenter().postNotificationName(MyPictureNotifitation,
+            object: self,
+            userInfo: [MyPictureUrlKey: status!.largePictureURLs!,
+                MyPictureIndexPathKey: indexPath])
+        
+    }
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return status?.pictureURLs?.count ?? 0
     }
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(pictureID, forIndexPath: indexPath) as! pictureCell
-        cell.imgurl = status?.pictureURLs![indexPath.row]
+        cell.imgurl = status?.pictureURLs![indexPath.item]
         return cell
     }
     
@@ -90,6 +106,7 @@ class pictureCell: UICollectionViewCell {
     var imgurl: NSURL? {
         didSet {
         iconView.sd_setImageWithURL(imgurl)
+            gifImageView.hidden = ((imgurl!.absoluteString as NSString).pathExtension.lowercaseString != "gif")
         
         }
     }
@@ -105,7 +122,9 @@ class pictureCell: UICollectionViewCell {
    private func setUpUI() {
         //    添加控件
         contentView.addSubview(iconView)
+    iconView.addSubview(gifImageView)
         iconView.ff_Fill(contentView)
+    gifImageView.ff_AlignInner(type: ff_AlignType.BottomRight, referView: iconView, size: nil)
     }
     // 懒加载控件
     lazy var iconView: UIImageView = {
@@ -115,6 +134,7 @@ class pictureCell: UICollectionViewCell {
         imageV.clipsToBounds = true
         return imageV
     }()
-
+//  懒加载GIF图标控件
+    lazy var gifImageView: UIImageView = UIImageView(image: UIImage(named: "timeline_image_gif"), highlightedImage: nil)
 }
 
