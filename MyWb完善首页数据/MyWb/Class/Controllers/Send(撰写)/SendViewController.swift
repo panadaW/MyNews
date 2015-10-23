@@ -48,7 +48,8 @@ class SendViewController: UIViewController {
         toolbar.backgroundColor = UIColor(white: 0.8, alpha: 1.0)
         view.addSubview(toolbar)
 //        设置布局
-         toolbar.ff_AlignInner(type: ff_AlignType.BottomLeft, referView: view, size: CGSize(width: UIScreen.mainScreen().bounds.width, height: 44))
+        let cons = toolbar.ff_AlignInner(type: ff_AlignType.BottomLeft, referView: view, size: CGSize(width: UIScreen.mainScreen().bounds.width, height: 44))
+        toolbarBottomCons = toolbar.ff_Constraint(cons, attribute: NSLayoutAttribute.Bottom)
 //        定义数组描述控件
         let itemSettings = [["imageName": "compose_toolbar_picture"],
             ["imageName": "compose_mentionbutton_background"],
@@ -68,6 +69,7 @@ var items = [UIBarButtonItem]()
     func prepareNAV() {
     navigationItem.leftBarButtonItem = UIBarButtonItem(title: "取消", style: UIBarButtonItemStyle.Plain, target: self, action: "close")
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "发送", style: UIBarButtonItemStyle.Plain, target: self, action: "send")
+        navigationItem.rightBarButtonItem?.enabled = false
         let titleView = UIView(frame: CGRect(x: 0, y: 0, width: 200, height: 32))
         
         let titleLabel = UILabel(color: UIColor.darkGrayColor(), fontSize: 15)
@@ -86,11 +88,12 @@ var items = [UIBarButtonItem]()
     
     }
     func close() {
-    print("取消")
+
+        textView.resignFirstResponder()
         dismissViewControllerAnimated(true, completion: nil)
     }
     func send() {
-    print("发送")
+    
         let text = textView.text
         NetWorkShare.shareTools.sendStatus(text) { (resault, error) -> () in
             if error != nil {
@@ -102,9 +105,42 @@ var items = [UIBarButtonItem]()
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        addKeyboardOberserver()
     }
+    deinit {
+    removeKeyboardOberserver()
+    }
+//添加键盘通知
+    private func addKeyboardOberserver() {
+    NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardChanged:", name: UIKeyboardWillChangeFrameNotification, object: nil)
+    }
+//    删除键盘通知
+    private func removeKeyboardOberserver() {
+    NSNotificationCenter.defaultCenter().removeObserver(self)
+    }
+    /// toolbar 底部约束
+    private var toolbarBottomCons: NSLayoutConstraint?
+//    键盘监听方法
+     func keyboardChanged(n:NSNotification) {
+        // 获取目标 frame
+        let rect = n.userInfo![UIKeyboardFrameEndUserInfoKey]!.CGRectValue
+        // 动画时长
+        let duration = n.userInfo![UIKeyboardAnimationDurationUserInfoKey]!.doubleValue
+        
+        // 设置约束
+        toolbarBottomCons?.constant = -(UIScreen.mainScreen().bounds.height - rect.origin.y)
+        
+        // 动画
+        UIView.animateWithDuration(duration) { () -> Void in
+            self.view.layoutIfNeeded()
+        }
 
+    }
+    override func viewDidDisappear(animated: Bool) {
+        super.viewDidDisappear(animated)
+//        激活键盘
+        textView.becomeFirstResponder()
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
