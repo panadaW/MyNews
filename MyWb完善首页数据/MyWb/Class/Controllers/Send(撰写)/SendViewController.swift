@@ -8,7 +8,12 @@
 
 import UIKit
 import SVProgressHUD
-class SendViewController: UIViewController {
+class SendViewController: UIViewController,UITextViewDelegate {
+    /// 表情键盘控制器
+    private lazy var emoticonVC: EmoticonViewController = EmoticonViewController { [weak self] emoticon in
+        self?.textView.insertEmoticon(emoticon)
+    }
+
     override func loadView() {
         view = UIView()
             view.backgroundColor = UIColor.whiteColor()
@@ -94,8 +99,7 @@ var items = [UIBarButtonItem]()
     }
     func send() {
     
-        let text = textView.text
-        NetWorkShare.shareTools.sendStatus(text) { (resault, error) -> () in
+        NetWorkShare.shareTools.sendStatus(textView.emoticonText) { (resault, error) -> () in
             if error != nil {
             SVProgressHUD.showInfoWithStatus("网络不给力", maskType: SVProgressHUDMaskType.Gradient)
                 return
@@ -103,6 +107,18 @@ var items = [UIBarButtonItem]()
             self.close()
         }
     }
+     func inputEmoticon() {
+        print("选择表情\(textView.inputView)")
+        textView.resignFirstResponder()
+        textView.inputView = (textView.inputView == nil) ? emoticonVC.view : nil
+        textView.becomeFirstResponder()
+    }
+    func textViewDidChange(textView: UITextView) {
+        placeholderLabel.hidden = textView.hasText()
+        navigationItem.rightBarButtonItem?.enabled = textView.hasText()
+    }
+    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         addKeyboardOberserver()
@@ -152,7 +168,7 @@ var items = [UIBarButtonItem]()
         
         tv.font = UIFont.systemFontOfSize(18)
         // 设置代理
-//        tv.delegate = self
+        tv.delegate = self
         
         // 允许垂直拖拽
         tv.alwaysBounceVertical = true
