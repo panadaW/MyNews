@@ -8,28 +8,46 @@
 
 import UIKit
 import SVProgressHUD
+let kStatusTextMaxLength = 10
 class SendViewController: UIViewController,UITextViewDelegate {
     /// 表情键盘控制器
     private lazy var emoticonVC: EmoticonViewController = EmoticonViewController { [weak self] emoticon in
         self?.textView.insertEmoticon(emoticon)
     }
+    //    准备照片选择器
+    private lazy var photoSelectorVc: PhotoCollectionViewController = PhotoCollectionViewController()
+    
 
     override func loadView() {
         view = UIView()
             view.backgroundColor = UIColor.whiteColor()
+        addChildViewController(photoSelectorVc)
+        view.addSubview(textView)
+        view.addSubview(photoSelectorVc.view)
+        view.addSubview(toolbar)
+//        准备子控制器
+        addChildViewController(photoSelectorVc)
+
         prepareNAV()
         prepareToolBar()
         prepareTextView()
+        preParePhotoView()
+    }
+//    准备照片选择器
+    func preParePhotoView() {
+           var s = UIScreen.mainScreen().bounds.size
+        s.height = 0.6 * s.height
+        photoSelectorVc.view.ff_AlignInner(type: ff_AlignType.BottomLeft, referView: view, size: s)
+        
     }
     // 准备文本框
     private func prepareTextView() {
-        view.addSubview(textView)
         textView.backgroundColor = UIColor.whiteColor()
         
         print(automaticallyAdjustsScrollViewInsets)
         // 自动布局
         // 提示：在 iOS 开发中，如果是单纯的 nav + scrollView 会自动调整滚动视图的边距
-        textView.contentInset = UIEdgeInsets(top: 64, left: 0, bottom: 0, right: 0)
+//        textView.contentInset = UIEdgeInsets(top: 64, left: 0, bottom: 0, right: 0)
         textView.ff_AlignInner(type: ff_AlignType.TopLeft, referView: view, size: nil)
         textView.ff_AlignVertical(type: ff_AlignType.TopRight, referView: toolbar, size: nil)
         
@@ -43,7 +61,7 @@ class SendViewController: UIViewController,UITextViewDelegate {
         // 在向 scrollView 中添加控件时，指定自动布局特别麻烦(左上角除外)
         // (需要增加一个view，专门来设置 scrollView 的 contentSize)
         view.addSubview(lengthTipLabel)
-//        lengthTipLabel.text = String(kStatusTextMaxLength)
+        lengthTipLabel.text = String(kStatusTextMaxLength)
         lengthTipLabel.sizeToFit()
         lengthTipLabel.ff_AlignInner(type: ff_AlignType.BottomRight, referView: textView, size: nil, offset: CGPoint(x: -8, y: -8))
     }
@@ -51,7 +69,6 @@ class SendViewController: UIViewController,UITextViewDelegate {
 //    准备toolbar
     func prepareToolBar() {
         toolbar.backgroundColor = UIColor(white: 0.8, alpha: 1.0)
-        view.addSubview(toolbar)
 //        设置布局
         let cons = toolbar.ff_AlignInner(type: ff_AlignType.BottomLeft, referView: view, size: CGSize(width: UIScreen.mainScreen().bounds.width, height: 44))
         toolbarBottomCons = toolbar.ff_Constraint(cons, attribute: NSLayoutAttribute.Bottom)
@@ -61,7 +78,7 @@ class SendViewController: UIViewController,UITextViewDelegate {
             ["imageName": "compose_trendbutton_background"],
             ["imageName": "compose_emoticonbutton_background", "action": "inputEmoticon"],
             ["imageName": "compose_addbutton_background"]]
-var items = [UIBarButtonItem]()
+        var items = [UIBarButtonItem]()
         for dict in itemSettings {
                    items.append(UIBarButtonItem(imageName: dict["imageName"]!, target: self, action: dict["action"]))
             //追加弹簧
@@ -98,10 +115,14 @@ var items = [UIBarButtonItem]()
         dismissViewControllerAnimated(true, completion: nil)
     }
     func send() {
-    
-        NetWorkShare.shareTools.sendStatus(textView.emoticonText) { (resault, error) -> () in
+    let text = textView.emoticonText
+        if text.characters.count > kStatusTextMaxLength {
+        SVProgressHUD.showInfoWithStatus("您输入的文本太长", maskType: SVProgressHUDMaskType.Gradient)
+        }
+        NetWorkShare.shareTools.sendStatus(text) { (resault, error) -> () in
             if error != nil {
             SVProgressHUD.showInfoWithStatus("网络不给力", maskType: SVProgressHUDMaskType.Gradient)
+                
                 return
             }
             self.close()
@@ -116,6 +137,11 @@ var items = [UIBarButtonItem]()
     func textViewDidChange(textView: UITextView) {
         placeholderLabel.hidden = textView.hasText()
         navigationItem.rightBarButtonItem?.enabled = textView.hasText()
+        let text = textView.emoticonText
+        let len = kStatusTextMaxLength - text.characters.count
+        lengthTipLabel.text = String(len)
+        lengthTipLabel.textColor =  len < 0 ? UIColor.redColor() : UIColor.lightGrayColor()
+        
     }
     
 
@@ -185,5 +211,4 @@ var items = [UIBarButtonItem]()
     
     /// 工具栏
     private lazy var toolbar = UIToolbar()
-
 }

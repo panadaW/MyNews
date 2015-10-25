@@ -27,6 +27,16 @@ extension UIButton {
         
         titleLabel?.font = UIFont.systemFontOfSize(fontSize)
     }
+    convenience init(imageName: String) {
+        self.init()
+        
+        setImage(imageName)
+    }
+    
+    func setImage(imageName: String) {
+        setImage(UIImage(named: imageName), forState: UIControlState.Normal)
+        setImage(UIImage(named: imageName + "_highlighted"), forState: UIControlState.Highlighted)
+    }
 
 
 }
