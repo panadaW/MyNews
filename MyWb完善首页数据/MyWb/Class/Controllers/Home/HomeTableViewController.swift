@@ -214,7 +214,7 @@ extension HomeTableViewController: UIViewControllerTransitioningDelegate {
 extension HomeTableViewController: UIViewControllerAnimatedTransitioning {
 //动画时长
     func transitionDuration(transitionContext: UIViewControllerContextTransitioning?) -> NSTimeInterval {
-        return 2.0
+        return 0.8
     }
 //实现专场方法
     func animateTransition(transitionContext: UIViewControllerContextTransitioning) {

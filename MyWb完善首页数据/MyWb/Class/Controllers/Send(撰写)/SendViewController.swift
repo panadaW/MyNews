@@ -119,7 +119,8 @@ class SendViewController: UIViewController,UITextViewDelegate {
         if text.characters.count > kStatusTextMaxLength {
         SVProgressHUD.showInfoWithStatus("您输入的文本太长", maskType: SVProgressHUDMaskType.Gradient)
         }
-        NetWorkShare.shareTools.sendStatus(text) { (resault, error) -> () in
+        let image = photoSelectorVc.photos.last
+        NetWorkShare.shareTools.sendStatus(text,image:image) { (resault, error) -> () in
             if error != nil {
             SVProgressHUD.showInfoWithStatus("网络不给力", maskType: SVProgressHUDMaskType.Gradient)
                 

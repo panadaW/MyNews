@@ -17,8 +17,9 @@ class topView: UIView {
                 nameLabel.text = status?.user?.name ?? ""
             vipIconView.image = status?.user?.vipImage
             memberIconView.image = status?.user?.memberImage
-            timeLabel.text = "未来"
-            sourceLabel.text = "来自申哥微博.com"
+            timeLabel.text = NSDate.sinaDate(status?.created_at ?? "")?.dateDesctiption
+    
+            sourceLabel.text = status?.source
         }
     }
     override init(frame: CGRect) {

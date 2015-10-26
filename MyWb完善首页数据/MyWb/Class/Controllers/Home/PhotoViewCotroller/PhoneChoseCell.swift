@@ -32,6 +32,8 @@ class PhoneChoseCell: UICollectionViewCell {
     }
 //    重新布局
     func resetphoneScrollView() {
+//        重新设置图片的形变
+        phoneImageView.transform = CGAffineTransformIdentity
         phoneScrollView.contentInset = UIEdgeInsetsZero
         phoneScrollView.contentOffset = CGPointZero
         phoneScrollView.contentSize = CGSizeZero

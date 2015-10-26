@@ -69,15 +69,18 @@ class NetWorkShare: AFHTTPSessionManager {
        
     }
 //    发布微博、
-    func sendStatus(status: String, finished: netFeedback) {
+    func sendStatus(status: String, image: UIImage?, finished: netFeedback) {
         
         guard var params = TokenToDict(finished) else {
             return
         }
         params["status"] = status
-        
-        // POST 发布微博
-        netWorkRequest(netWorkMethod.POST, coad: "2/statuses/update.json", paramet: params, finish: finished)
+        if image == nil {
+            // POST 发布微博
+            netWorkRequest(netWorkMethod.POST, coad: "2/statuses/update.json", paramet: params, finish: finished)
+        } else {
+        uploadImage("https://upload.api.weibo.com/2/statuses/upload.json", image: image!, parmar: params, finished: finished)
+        }
     }
 
 //    加载微博数据
@@ -148,4 +151,42 @@ class NetWorkShare: AFHTTPSessionManager {
         POST(coad, parameters: paramet, success: finishBack, failure: failedBack)
     }
 }
+//    上传图像
+    private func uploadImage(urlString: String, image: UIImage,parmar: [String: AnyObject],finished: netFeedback) {
+        //    定义成功闭包
+        let finishBack: (NSURLSessionDataTask!, AnyObject!) -> Void = { (_,JSON) -> Void in
+            
+            if let resault = JSON as? [String: AnyObject] {
+                
+                finished(resault: resault, error: nil)
+            }
+            else {
+                print("数据异常")
+                let error = netWorkError.emptyDataError.error()
+                finished(resault: nil, error: error)
+            }
+        }
+        //   定义失败闭包
+        let failedBack: (NSURLSessionDataTask!, NSError!) -> Void = { (_, error) -> Void in
+            print(error)
+            finished(resault: nil, error: error)
+        }
+
+    POST(urlString, parameters: parmar, constructingBodyWithBlock: { (formData) -> Void in
+//        将图片转换为二进制
+        let data = UIImagePNGRepresentation(image)!
+          formData.appendPartWithFileData(data, name: "pic", fileName: "xxx", mimeType: "application/octet-stream")
+        }, success: finishBack, failure: failedBack)
+    
+    
+    
+    
+    
+    
+    }
+    
+    
+    
+    
+    
 }

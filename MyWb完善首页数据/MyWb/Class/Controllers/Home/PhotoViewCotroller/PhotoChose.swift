@@ -27,9 +27,10 @@ class PhotoChoseViewController: UIViewController {
 //        var w = UIScreen.mainScreen().bounds
 //        w.size.width += 20
 //        view = UIView(frame: w)
-//        
+//        setUpUI()
 //        view.backgroundColor = UIColor.redColor()
 //    }
+    
     override func viewDidLoad() {
 //        print(urls)
         super.viewDidLoad()
