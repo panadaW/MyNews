@@ -8,7 +8,7 @@
 
 import UIKit
 import SVProgressHUD
-let kStatusTextMaxLength = 10
+let kStatusTextMaxLength = 30
 class SendViewController: UIViewController,UITextViewDelegate {
     /// 表情键盘控制器
     private lazy var emoticonVC: EmoticonViewController = EmoticonViewController { [weak self] emoticon in

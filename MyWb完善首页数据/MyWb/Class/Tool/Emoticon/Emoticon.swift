@@ -41,7 +41,62 @@ class EmoticonPackage: NSObject {
         self.id = id
         self.groupName = groupName
     }
+    /// 将 string 生成为带表情符号的属性字符串
+    class func emoticonText(string: String, font: UIFont) -> NSAttributedString {
+        
+        let pattern = "\\[.*?\\]"
+        let regex = try! NSRegularExpression(pattern: pattern, options: NSRegularExpressionOptions.DotMatchesLineSeparators)
+        
+        // 开始匹配 matchesInString 在字符串中作任意多的匹配
+        let results = regex.matchesInString(string, options: NSMatchingOptions(rawValue: 0), range: NSMakeRange(0, string.characters.count))
+        // 获得匹配结果的数量
+        var count = results.count
+        
+        // 使用 string 创建属性文本
+        let strM = NSMutableAttributedString(string: string)
+        
+        // 倒着遍历数组，获取匹配结果
+        while count > 0 {
+            let result = results[--count]
+            
+            let range = result.rangeAtIndex(0)
+            // 获取到表情字符串
+            let emString = (string as NSString).substringWithRange(range)
+            // 根据字符串获取表情
+            if let emoticon = EmoticonPackage.emoticon(string: emString) {
+                // 根据表情，创建属性字符串
+                let attrString = EmoticonAttachment.imageText(emoticon, font: font)
+                
+                // 替换 strM 中对应位置的文本
+                strM.replaceCharactersInRange(range, withAttributedString: attrString)
+            }
+        }
+        
+        // 更新整个字符串的字体
+        strM.addAttribute(NSFontAttributeName, value: font, range: NSMakeRange(0, strM.length))
+        
+        return strM
+    }
     
+    /// 根据表情字符串返回对应的表情符号 [爱你]
+    private class func emoticon(string string: String) -> Emoticon? {
+        
+        // 遍历所有的表情包的表情数组
+        var emoticon: Emoticon? = nil
+        for p in EmoticonPackage.packages {
+            
+            // 在 p emoticons 数组中查找表情
+            emoticon = p.emoticons!.filter {$0.chs == string}.last
+            
+            // 如果找到 emoticon 退出
+            if emoticon != nil {
+                break
+            }
+        }
+        
+        return emoticon
+    }
+
     /// 添加最近使用的表情 - 仅往第 0 个分组添加
     /// 仅是内存排序！
     class func addFavorate(emoticon: Emoticon) {

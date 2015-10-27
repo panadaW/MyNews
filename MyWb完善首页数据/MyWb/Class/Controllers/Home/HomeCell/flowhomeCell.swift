@@ -38,9 +38,10 @@ class flowhomeCell: homeCell {
     
     }
 //   懒加载转发文字
-    lazy var forwardlable: UILabel = {
-    let lab = UILabel(color: UIColor.darkGrayColor(), fontSize: 14)
+    lazy var forwardlable: FFLabel = {
+    let lab = FFLabel(color: UIColor.darkGrayColor(), fontSize: 14)
         lab.numberOfLines = 0
+        lab.labelDelegate = self
         lab.preferredMaxLayoutWidth = UIScreen.mainScreen().bounds.width - 2 * statusCellControlMargin
         return lab
     }()

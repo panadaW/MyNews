@@ -35,6 +35,8 @@
 		E6B525A41BDCFDAA0015774C /* UIImage+Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6B525A31BDCFDAA0015774C /* UIImage+Extention.swift */; settings = {ASSET_TAGS = (); }; };
 		E6CFF4E21BDDD95D004E66EE /* NSData+Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6CFF4E11BDDD95D004E66EE /* NSData+Extention.swift */; settings = {ASSET_TAGS = (); }; };
 		E6CFF4E41BDDDB61004E66EE /* NSString+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6CFF4E31BDDDB61004E66EE /* NSString+Extension.swift */; settings = {ASSET_TAGS = (); }; };
+		E6CFF4E61BDE1716004E66EE /* FFlable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6CFF4E51BDE1716004E66EE /* FFlable.swift */; settings = {ASSET_TAGS = (); }; };
+		E6CFF4E81BDE23ED004E66EE /* HomeWeb.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6CFF4E71BDE23ED004E66EE /* HomeWeb.swift */; settings = {ASSET_TAGS = (); }; };
 		E6D3DB151BD5ED94007304AF /* PhotoChose.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6D3DB141BD5ED94007304AF /* PhotoChose.swift */; settings = {ASSET_TAGS = (); }; };
 		E6D500531BCF46A100969E48 /* MyRefresh.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6D500521BCF46A100969E48 /* MyRefresh.swift */; settings = {ASSET_TAGS = (); }; };
 		E6D500551BCF46C400969E48 /* MyrefreshView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E6D500541BCF46C400969E48 /* MyrefreshView.xib */; settings = {ASSET_TAGS = (); }; };
@@ -113,6 +115,8 @@
 		E6B525A31BDCFDAA0015774C /* UIImage+Extention.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Extention.swift"; sourceTree = "<group>"; };
 		E6CFF4E11BDDD95D004E66EE /* NSData+Extention.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSData+Extention.swift"; sourceTree = "<group>"; };
 		E6CFF4E31BDDDB61004E66EE /* NSString+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSString+Extension.swift"; sourceTree = "<group>"; };
+		E6CFF4E51BDE1716004E66EE /* FFlable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FFlable.swift; sourceTree = "<group>"; };
+		E6CFF4E71BDE23ED004E66EE /* HomeWeb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeWeb.swift; sourceTree = "<group>"; };
 		E6D3DB141BD5ED94007304AF /* PhotoChose.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoChose.swift; sourceTree = "<group>"; };
 		E6D500521BCF46A100969E48 /* MyRefresh.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyRefresh.swift; sourceTree = "<group>"; };
 		E6D500541BCF46C400969E48 /* MyrefreshView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyrefreshView.xib; sourceTree = "<group>"; };
@@ -345,6 +349,7 @@
 				E6D500511BCF446900969E48 /* RefreshView */,
 				E6778ED41BCD2FCB001E9663 /* HomeCell */,
 				E6F29FC01BC67B340020AAD7 /* HomeTableViewController.swift */,
+				E6CFF4E71BDE23ED004E66EE /* HomeWeb.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -386,6 +391,7 @@
 		E6F65B881BC91047006E3185 /* Tool */ = {
 			isa = PBXGroup;
 			children = (
+				E6CFF4E51BDE1716004E66EE /* FFlable.swift */,
 				E6CFF4E11BDDD95D004E66EE /* NSData+Extention.swift */,
 				E6B525A01BDCC6CF0015774C /* PhotoSelecterViewController */,
 				E69AD7EB1BDB3E23006D32B8 /* Emoticon */,
@@ -586,6 +592,8 @@
 				E6B525A41BDCFDAA0015774C /* UIImage+Extention.swift in Sources */,
 				E62853A41BCD5D3100F915FA /* UIbutten+EXtention.swift in Sources */,
 				E69AD7F21BDB3E23006D32B8 /* EmoticonAttachment.swift in Sources */,
+				E6CFF4E61BDE1716004E66EE /* FFlable.swift in Sources */,
+				E6CFF4E81BDE23ED004E66EE /* HomeWeb.swift in Sources */,
 				E69AD7F11BDB3E23006D32B8 /* Emoticon.swift in Sources */,
 				E6B525A21BDCC6FE0015774C /* PhotoCollectionViewController.swift in Sources */,
 				E6778ED81BCD3C0E001E9663 /* topView.swift in Sources */,

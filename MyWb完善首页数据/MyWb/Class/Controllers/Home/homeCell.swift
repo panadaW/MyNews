@@ -8,12 +8,18 @@
 
 import UIKit
 let statusCellControlMargin: CGFloat = 8.0
-
+protocol HomeCellDelegate: NSObjectProtocol {
+    func statusCellDidSelectedLinkText(text: String)
+   
+}
 class homeCell: UITableViewCell {
+    /// 定义代理
+    weak var homeCellDelegate: HomeCellDelegate?
     var status: Status? {
         didSet {
            topview.status = status
-            contentLable.text = status?.text ?? ""
+            let text = status?.text ?? ""
+            contentLable.attributedText = EmoticonPackage.emoticonText(text, font: contentLable.font)
             pictureView.status = status
            
 //            设置配图宽高
@@ -71,9 +77,10 @@ class homeCell: UITableViewCell {
 //    懒加载顶部试图
     lazy var topview: topView = topView()
 // 懒加载内容视图
-        lazy var contentLable: UILabel = {
-    let lable = UILabel(color: UIColor.darkGrayColor(), fontSize: 15)
+        lazy var contentLable: FFLabel = {
+    let lable = FFLabel(color: UIColor.darkGrayColor(), fontSize: 15)
         lable.numberOfLines = 0
+            lable.labelDelegate = self
         lable.preferredMaxLayoutWidth = UIScreen.mainScreen().bounds.width - 2 * statusCellControlMargin
         return lable
     }()
@@ -84,3 +91,14 @@ class homeCell: UITableViewCell {
 
     
 }
+extension homeCell: FFLabelDelegate {
+    func labelDidSelectedLinkText(label: FFLabel, text: String) {
+//        print(text)
+        if text.hasPrefix("http://") {
+    homeCellDelegate?.statusCellDidSelectedLinkText(text)
+        }
+    }
+
+}
+
+

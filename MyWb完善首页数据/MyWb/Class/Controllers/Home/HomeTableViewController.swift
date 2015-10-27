@@ -8,7 +8,7 @@
 
 import UIKit
 
-class HomeTableViewController: BaseTableViewController {
+class HomeTableViewController: BaseTableViewController,HomeCellDelegate {
 
     var statues: [Status]? {
         didSet{
@@ -138,6 +138,7 @@ class HomeTableViewController: BaseTableViewController {
         if status.retweeted_status == nil{
         
         let cell = tableView.dequeueReusableCellWithIdentifier("Ncell", forIndexPath: indexPath) as! nomalHomecell
+            cell.homeCellDelegate = self
             if indexPath.row == statues!.count - 1 {
 //            设置上拉刷新标记
                 pullupRefreshFlag = true
@@ -149,6 +150,7 @@ class HomeTableViewController: BaseTableViewController {
         } else {
         
             let cell = tableView.dequeueReusableCellWithIdentifier("Wcell", forIndexPath: indexPath) as! flowhomeCell
+             cell.homeCellDelegate = self
             if indexPath.row == statues!.count - 1 {
                 //            设置上拉刷新标记
                 pullupRefreshFlag = true
@@ -158,6 +160,17 @@ class HomeTableViewController: BaseTableViewController {
             cell.status = statues![indexPath.row]
             return cell
         }
+    }
+//    加载超链接文字
+    func statusCellDidSelectedLinkText(text: String) {
+        guard let url = NSURL(string: text) else {
+        print("URL错误")
+            return
+        }
+        let vc = HomeWeb()
+        vc.url = url
+        vc.hidesBottomBarWhenPushed = true
+        navigationController?.pushViewController(vc, animated: true)
     }
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         let status = statues![indexPath.row]

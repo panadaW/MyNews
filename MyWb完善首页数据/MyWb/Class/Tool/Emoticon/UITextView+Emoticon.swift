@@ -33,24 +33,7 @@ extension UITextView {
         if emoticon.chs != nil {
             
             // 1. 创建图片属性字符串
-            let attachment = EmoticonAttachment()
-            // 记录表情文字
-            attachment.chs = emoticon.chs
-            
-            attachment.image = UIImage(contentsOfFile: emoticon.imagePath)
-            // 设置边界
-            let h = font!.lineHeight
-            print("线高 \(h)")
-            // 提示：在 scrollView 中，bounds 的原点 就是 contentOffset
-            attachment.bounds = CGRect(x: 0, y: -4, width: h, height: h)
-            
-            let imageText = NSMutableAttributedString(attributedString: NSAttributedString(attachment: attachment))
-            
-            // 添加文本字体属性
-            // name: 属性的名称
-            // value: 属性值
-            imageText.addAttribute(NSFontAttributeName, value: font!, range: NSMakeRange(0, 1))
-            
+          let imageText = EmoticonAttachment.imageText(emoticon, font: font!)
             // 2. 图片文字插入到 textView
             // 1> 获取可变的属性文本
             let attrString = NSMutableAttributedString(attributedString: attributedText)
